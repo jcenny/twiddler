@@ -6,14 +6,17 @@
     <script src='moment.js'></script>
     <script src='livestamp.js'></script>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round|Open+Sans:300i,400,400i,600,700|PT+Sans:400,400i,700,700i&display=swap" rel="stylesheet">
   </head>
   <body>
     <div class='all'>
-      <h1>Twiddler</h1>
-      <section class='standard'>
-      </section>
-      <section class='newTweet'>
-      </section>
+      <h1 class='title'>Twiddler</h1>
+      <div class='allTweets'>
+        <section class='standard'>
+        </section>
+        <section class='newTweet'>
+        </section>
+      </div>
       <div class='button'>
       </div>
     <script>
@@ -31,7 +34,7 @@
           var $message = $('<span class=message></span>');
           var $timestamp = $('<span class=timestamp></span>') 
           
-          $user.text('@' + tweet.user + ' ').appendTo($tweet);
+          $user.attr('data-user', tweet.user).text('@' + tweet.user + ' ').appendTo($tweet);
           $timestamp.attr('data-livestamp', tweet.created_at.toUTCString());
           $timestamp.appendTo($tweet);
           $message.text(' ' + tweet.message + ' ').appendTo($tweet);
@@ -52,7 +55,7 @@
         var $newMessage = $('<span class=message></span>');
         var $newTimestamp = $('<span class=timestamp></span>'); 
 
-        $newUser.text('@' + newTweet.user + ' ').appendTo($newTweet);
+        $newUser.attr('data-user', newTweet.user).text('@' + newTweet.user + ' ').appendTo($newTweet);
         $newTimestamp.attr('data-livestamp', newTweet.created_at.toUTCString());
         $newTimestamp.appendTo($newTweet);
         $newMessage.text(' ' + newTweet.message + ' ').appendTo($newTweet);
@@ -60,7 +63,17 @@
         })
         
         //click on username to see user specific tweets
-      
+        $('.allTweets').on('mouseover', '.eachTweet .user', function(){
+          $(this).addClass('color');
+        });
+
+        $('.allTweets').on('click', '.eachTweet .user', function(event) {
+          event.preventDefault();
+          var user = $(this).data('user');
+          $('.eachTweet').not('div:contains("'+ user +'")').hide(400);
+          $('div:contains("'+ user +'")').show(400);
+          $('.newTweetButton').hide(400);
+        })
       });
     </script>
     </div>
