@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(50, 99, 83);
+}
+
+h1 {
+    font-family: 'Crete Round', serif;
+    font-size: 70px;
+    letter-spacing: 15px;
+    color: rgba(181, 97, 37, 1);
+    text-shadow: 4px 4px 10px rgb(51,27,1);
+}
+
+.all {
+    width: 30%;
+    margin: auto;
+}
+
+.user {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    margin: 5px;
+    display: inline-block;
+}
+
+
+.timestamp {
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(181, 97, 37, 1);
+    display: inline;
+}
+
+.message {
+    font-family: 'PT Sans', sans-serif;
+    display: block;
+    font-size: 16px;
+    margin: 5px;
+}
+
+.newTweetButton {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+    background-color: rgb(50, 99, 83);
+    color: rgba(181, 97, 37, 1);
+    border-color: black;
+    border-width: 1px;
+    border-radius: 10px;
+    box-shadow: 2px 2px black;
+    float: right;
+    margin-bottom: 30px;
+}
+
+.button {
+    margin-top: 30px;
+}
+
+.eachTweet{
+    margin-bottom: 10px;
+}
+
+.color:hover {
+    color: rgb(56, 141, 113);
+    cursor: crosshair;
+}
