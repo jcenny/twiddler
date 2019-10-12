@@ -3,23 +3,37 @@
   <head>
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="moment.js"></script>
+    <script src="livestamp.js"></script>
   </head>
   <body>
     <script>
-
       $(document).ready(function(){
         var $body = $('body');
         $body.html('');
-
+      
+        //generate tweet
         var index = streams.home.length - 1;
-        while(index >= 0){
+        
+        while(index >= 0) {
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          var $user = $('<p class=user></p>');
+          var $message = $('<span class=message></span>');
+          var $timestamp = $('<span class=timestamp></span>') 
+          
+          $user.text('@' + tweet.user + ' ').appendTo($tweet);
+          $timestamp.attr('data-livestamp', tweet.created_at.toUTCString());
+          $timestamp.appendTo($user);
+          $message.text(' ' + tweet.message + ' ').appendTo($user);
           $tweet.appendTo($body);
           index -= 1;
         }
 
+        //show new tweets
+
+        //click on username to see user specific tweets
+      
       });
 
     </script>
